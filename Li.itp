@@ -1,0 +1,10 @@
+; Li.itp from https://github.com/intbio/gromacs_ff
+; Parameters from Joung & Cheatham (https://doi.org/10.1021/jp8001614)
+
+[ moleculetype ]
+;name            nrexcl
+ li               3
+
+[ atoms ]
+; id    at type         res nr  residu name     at name  cg nr  charge
+   1    Li                  1       LI             LI      1    1.00000
