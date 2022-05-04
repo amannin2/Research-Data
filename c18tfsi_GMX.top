@@ -1,0 +1,28 @@
+; c18tfsi_GMX.top created by acpype (v: 2021-02-05T22:15:50CET) on Wed Sep 29 13:18:54 2021
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+1               2               yes             0.5     0.8333
+
+[atomtypes]
+; name	bond_type	mass	charge	 ptype	 sigma	 	epsilon
+Li	3	       6.94	0.00000	 A	2.02590e-01    7.65672e-02
+c3      c3	       0.0000   0.00000  A	3.39967e-01    4.57730e-01
+f       f              0.0000   0.00000  A      3.11815e-01    2.55224e-01
+s6      s6             0.0000   0.00000  A      3.56359e-01    1.04600e+00
+o       o	       0.0000   0.00000  A      2.95992e-01    8.78640e-01
+ne      ne             0.0000   0.00000  A      3.25000e-01    7.11280e-01
+sy      sy             0.0000   0.00000  A      3.56359e-01    1.04600e+00
+h1      h1             0.0000   0.00000  A      2.47135e-01    6.56888e-02
+hc      hc             0.0000   0.00000  A      2.64953e-01    6.56888e-02
+
+; Include c18tfsi_GMX.itp topology
+#include "c18tfsi_GMX.itp"
+#include "Li.itp"
+
+[ system ]
+Neat  c18tfsi Li
+
+[ molecules ]
+c18tfsi          512
+Li		 512     
