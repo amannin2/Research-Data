@@ -1,0 +1,42 @@
+; RUN CONTROL PARAMETERS =
+
+integrator = steep       ; md integrator
+nsteps = 5000000
+
+; Energy Minimization
+emtol = 100		; total energy tolerance for any one molecule
+emstep = 0.01		; energy step size [nm]
+comm-mode = Linear      ; Remove center of mass translating
+
+
+; NEIGHBORSEARCHING PARAMETERS =
+cutoff-scheme = verlet ; This option has an explicit, exact cut-off at rvdw=rcoulomb.
+nstlist = 20           ; [steps] freq to update neighbor list
+ns_type = grid         ; method of updating neighbor list
+pbc = xyz              ; periodic boundary conditions in all directions 
+rlist = 1.3            ; [nm] cut-off distance for the short-range neighbor list
+verlet-buffer-tolerance = 0.005  ; sets the maximum allowed error for pair interactions per particle. Indirectly sets rlist
+
+; OPTIONS FOR ELECTROSTATICS AND VDW =
+coulombtype = PME     ; Particle-Mesh Ewald electrostatics
+rcoulomb = 1.3        ; [nm] distance for Coulomb cut-off
+vdw_type = PME        ; twin-range cut-off with rlist where rvdw >= rlist
+rvdw = 1.3            ; [nm] distance for LJ cut-off 
+fourierspacing = 0.15 ; [nm] grid spacing for FFT grid when using PME
+pme_order = 4         ; interpolation order for PME, 4 = cubic
+ewald_rtol = 1e-05    ; relative strength of Ewald-shifted potential at rcoulomb
+DispCorr = EnerPres
+
+; GENERATE VELOCITIES FOR STARTUP RUN =
+gen_vel = no      ; velocity generation turned on
+
+; OPTIONS FOR BONDS =
+constraints = hbonds
+constraint_algorithm = lincs
+unconstrained_start = no
+shake_tol = 0.00001
+lincs_order = 4
+lincs_warnangle = 30
+morse = no
+lincs_iter = 2
+
